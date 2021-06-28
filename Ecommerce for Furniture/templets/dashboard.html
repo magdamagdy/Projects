@@ -1,0 +1,229 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.79.0">
+  <title>dashboard</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+  <!-- Bootstrap core CSS -->
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+
+    }
+    @media (max-width: 768px){
+      .py-5{
+          margin-top: 100px;
+      }
+    }
+
+
+   .btn {
+    display: block;
+    margin-left: 35%;
+
+   }
+
+   .dropbtn {
+  background-color:  #0A043C;
+  border-radius: 10px;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  display: inline-block;
+}
+
+.dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #bbbbbb;
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: #0a043c;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      .show {display: block;}
+      .navbar-nav h1{
+        font-family: 'georgia', serif;
+        font-size: 30px;
+        color: white;
+        padding-right: 10px;
+      }
+      .navbar-nav a:hover{
+        background-color: #ffe3d8;
+
+      }
+      .nav-item a:hover{
+        color: #0a043c;
+      }
+
+.arrow {
+          position: fixed;
+           bottom: 40px;
+           right: 10px;
+           color:#0a043c;
+      }
+      .btn-sm{
+        margin: 0cm;
+      }
+
+  </style>
+
+
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top" style=background-color:#0a043c;>
+          <div class="container-fluid">
+              <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <h1><a style="color:white" href="/seller"><i class="fa fa-home"></i></a>Furniture</h1>
+                <li>
+                  <a class="nav-link active"  href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link active"  href="#" onclick="myFunction()" >Products</a>
+                  <div id="myDropdown" class="dropdown-content">
+                    <a href="/chairs">chairs</a>
+                    <a href="/armchairs">Armchairs</a>
+                    <a href="/chaiselongues">chaiselongues</a>
+                    <a href="/sofas">Sofas</a>
+                    <a href="/wardrobes">Wardrobes</a>
+                    <a href="/beds">Beds</a>
+                    <a href="/shelving_units">Shelving units</a>
+                    <a href="/tables">Tables</a>
+                  </div>
+                </li>
+              </ul>
+          </div>
+        </nav>
+      </header>
+
+<main>
+
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Welcome to your Dashboard</h1>
+      <h4 style="color:#0a043c;font-weight:bold"> Your Rating is {{rating}} <span>  <i class="far fa-star" ></i></span></h4>
+      <p class="lead text-muted">If you want to add a new item please fill in the form then press on "Add new item" button</p>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <!--<input type="text" name="title">-->
+          <button type="submit" class="btn btn-primary my-2" >Add new item</button>
+
+      <!--<p>
+        <div class="dropdown">
+          <select class="dropbtn" name="category">
+            <option selected disabled="true" >Select Category</option>
+            <option value="Chairs">Chairs</option>
+            <option value="Armchairs">Armchairs</option>
+            <option value="Chaiselongues">Chaiselongues</option>
+            <option value="Sofas">Sofas</option>
+            <option value="Wardrobes">Wardrobes</option>
+            <option value="Beds">Beds</option>
+            <option value="Shelving Units">Shelving Units</option>
+            <option value="Tables">Tables</option>
+          </select>
+        </div>
+
+          </p>-->
+        </form>
+
+    </div>
+
+  </div>
+</section>
+
+<div class="album py-5 bg-light">
+  <div class="container mycontainer">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for item in items %}
+      <div class="col">
+        <div class="card shadow-sm">
+          {% if item.image %}
+          <img src ="{{item.image.url}}" width="100%" height="300">
+          {% endif %}
+          <div class="card-body">
+            <p class="card-text">{{item.description}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+
+            <div>
+              <small class="text-muted">{{item.date}}</small> <br>
+              <small class="text-muted" style="font-weight:bold">{{item.price}} EGP </small><br>
+              <small class="text-muted" > {{item.amount}} items</small>
+
+            </div>
+            <div class="btn-group">
+              <!--<button type="submit" class="btn btn-sm btn-outline-secondary" name="remove">Remove</button>-->
+              <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
+
+              <a href="{% url 'remove_item' item.pk %}" class="btn btn-sm btn-outline-secondary" role="button">Remove</a>
+
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+       {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<div class="arrow">
+    <a href="#">
+      <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:#0a043c;">
+          <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+          <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"></path>
+      </svg>
+    </a>
+</div>
+<script>
+    /*dropdown of products*/
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+      }
+  </script>
+
+  <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+
+</body></html>

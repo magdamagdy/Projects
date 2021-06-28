@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#7952b3">
+
+
+    <style>
+     
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .confirm{
+          background-color: #0a043c;
+          color:  white;
+          border-color:  #ffe3d8;
+          
+      }
+      .confirm:hover, .confirm:focus, .confirm:active, .confirm.active, .open>.dropdown-toggle.confirm {
+          color: #0a043c;
+          background-color: #ffe3d8;
+          border-color: #0a043c;
+          
+      }
+      .cancel{
+        background-color:#bbbbbb;
+        color: white;
+        border-color: #0a043c;
+      }
+      .cancel:hover, .cancel:focus, .cancel:active, .cancel.active, .open>.dropdown-toggle.cancel {
+        color: #0a043c;
+          background-color: #ffe3d8;
+          border-color: #0a043c;
+          
+      }
+      
+      .text-center{
+        color: #0a043c;
+      }
+      .mb-3{
+        color: #0a043c;
+      }
+      .reveal-if-active {
+         opacity: 0;
+         max-height: 20px; 
+         overflow: hidden; 
+} 
+input[type="radio"]:checked ~ .reveal-if-active {
+    opacity: 1;
+    max-height: 300px;
+    padding: 10px 20px;
+    transform: scale(1);
+    overflow: visible;
+}
+.search{
+          position: absolute;
+          right: 20px;
+      }
+.dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #bbbbbb;
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: #0a043c;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      .show {display: block;}
+      .insideNav {
+        display: none;
+        width: 300px;
+        height: 500px;
+        position: absolute;
+        left: 400px;
+        top: 50px;
+        right: 0;
+        background-color: #0a043c;
+        z-index: 1;
+      }
+      .insideNav a {
+        color: white;
+        display: block;
+      }
+
+      .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+    @media (max-width: 768px){
+        .py-5{
+            margin-top: 200px;
+        }
+    }
+
+
+      /*products dropdown menu style*/
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #bbbbbb;
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: #0a043c;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      .show {display: block;}
+      .navbar-nav h1{
+        font-family: 'georgia', serif;
+        font-size: 30px;
+        color: white;
+        padding-right: 10px;
+      }
+
+      .navbar-nav a:hover{
+        background-color: #ffe3d8;
+
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+      <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top" style=background-color:#0a043c;>
+          <div class="container-fluid">
+              <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <h1><a style="color:white" href="#"><i class="fa fa-home"></i></a>Furniture</h1>
+                <li>
+                  <a class="nav-link active"  href="/offers">Offers</a>
+                </li>
+                <li>
+                  <a class="nav-link active"  href="/wishlist">Wishlist</a>
+                </li>
+                <li>
+                  <a class="nav-link active"  href="/cart_items">Cart</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link active"  href="#" onclick="myFunction()" >Products</a>
+                  <div id="myDropdown" class="dropdown-content">
+                    <a href="/chairs">chairs</a>
+                    <a href="/armchairs">Armchairs</a>
+                    <a href="/chaiselongues">chaiselongues</a>
+                    <a href="/sofas">Sofas</a>
+                    <a href="/wardrobes">Wardrobes</a>
+                    <a href="/beds">Beds</a>
+                    <a href="/shelving_units">Shelving units</a>
+                    <a href="/tables">Tables</a>
+                  </div>
+                </li>
+              </ul>
+          </div>
+        </nav>
+      </header>
+    
+<div class="container">
+  <main>
+    <div class="py-5 text-center" style = "position:relative; top:30px; " >
+    
+      <h2>Checkout</h2>
+
+    </div>
+
+   <div class="row g-3">
+      <div class="col-md-5 col-lg-4 order-md-last">
+       
+      </div>
+      <div class="col-md-7 col-lg-8" >
+        <h4 class="mb-3">Shipping information</h4>
+        <form class="needs-validation" novalidate method="post">
+	        {% csrf_token %}
+          <div class="row g-3">
+
+            <div class="col-12">
+              <label for="username" class="form-label">Username</label>
+              <div class="input-group">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+              <div class="invalid-feedback">
+                  Your username is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email </label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="example@email.com" required>
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="Phone" class="form-label">Phone number </label>
+              <input type="phone" class="form-control" id="Phone" name="phone" placeholder="(+20) xxxx xxx xxx " required>
+              <div class="invalid-feedback">
+                Please enter your phone number.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" name="address" placeholder="No. of building, street name, floor no." required>
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+
+           
+
+            <div class="col-md-5">
+              <label for="country" class="form-label">Country</label>
+              <select class="form-select" id="country" name="country" required>
+                <option value="">Choose...</option>
+			   <option value="Algeria">Algeria</option>
+			   <option value="Bahrain">Bahrain</option>
+			   <option value="Canada">Canada</option>
+			   <option value="China">China</option>
+			   <option value="Egypt">Egypt</option>
+			   <option value="France">France</option>
+			   <option value="Greece">Greece</option>
+			   <option value="Germany">Germany</option>
+			   <option value="India">India</option>
+			   <option value="Italy">Italy</option>
+			   <option value="Japan">Japan</option>
+			   <option value="Jordan">Jordan</option>
+			   <option value="Lebanon">Lebanon</option>
+	           <option value="Spain">Spain</option>
+	              <option value="Russia">Russia</option>
+	           <option value="United Kingdom">United Kingdom</option>
+			   <option value="United States of America">United States of America</option>
+
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="state" class="form-label">City</label>
+              <input type="text" class="form-control"  name="city" placeholder="" required>
+              <div class="invalid-feedback">
+                Please provide a valid city.
+              </div>
+            </div>
+<div>
+	<a href="https://www.xe.com/currencyconverter/convert/?Amount=1&From=EUR&To=EGP">Visit this site to check currency converters according to the day date</a>
+</div>
+            <div class="col-md-5">
+              <label for="currency" class="form-label">Currency</label>
+              <select class="form-select" id="currency" name="currency" required>
+                <option value="" selected="selected">Choose...</option>
+			     <option value="EGP">Egypt Pounds L.E</option>
+			   <option value="USD">United States Dollars $</option>
+				<option value="EUR">Euro</option>
+				<option value="GBP">United Kingdom Pounds</option>
+				<option value="TRL">Turkey Lira</option>
+				<option value="CNY">China Yuan Renmimbi</option>
+				<option value="INR">India Rupees</option>
+				<option value="JPY">Japan Yen</option>
+				<option value="JOD">Jordan Dinar</option>
+				<option value="LBP">Lebanon Pounds</option>
+				<option value="RUR">Russia Rubles</option>
+				<option value="SAR">Saudi Arabia Riyal</option>
+
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid currency.
+              </div>
+            </div>
+
+          <hr class="my-4">
+
+          <div class="form-check" >
+            <input type="checkbox" class="form-check-input" id="same-address" required>
+            <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
+          </div>
+				<div class="invalid-feedback">
+                Please confirm the address for shipping.
+              </div>
+
+
+          <hr class="my-4">
+       
+          <h4 class="mb-3">Payment</h4>
+
+          <div class="my-3">
+            <div class="form-check">
+                <input id="cash" name="paymentMethod" type="radio" class="form-check-input" value="cash" required>
+                <label class="form-check-label" for="cash">Cash</label> 
+              </div>
+            <div class="form-check">
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" value="credit" required>
+              <label class="form-check-label" for="credit">Card</label>
+           <!--</div>-->
+            <div class="reveal-if-active">
+                <div class="row gy-3 ">
+                    <div class="col-md-6">
+                      <label for="cc-name" class="form-label">Name on card</label>
+                      <input type="text" class="form-control" id="cc-name" placeholder="" name="name">
+                      <small class="text-muted">Full name as displayed on card</small>
+                      <div class="invalid-feedback">
+                        Name on card is required
+                      </div>
+                    </div>
+        
+                    <div class="col-md-6">
+                      <label for="cc-number" class="form-label">Credit card number</label>
+                      <input type="text" class="form-control" id="cc-number" placeholder="" name="number" >
+                      <div class="invalid-feedback">
+                        Credit card number is required
+                      </div>
+                    </div>
+        
+                    <div class="col-md-3 ">
+                      <label for="cc-expiration" class="form-label">Expiration</label>
+                      <input type="text" class="form-control" id="cc-expiration" placeholder="" name="exp">
+                      <div class="invalid-feedback">
+                        Expiration date required
+                      </div>
+                    </div>
+        
+                    <div class="col-md-3 ">
+                      <label for="cc-cvv" class="form-label">CVV</label>
+                      <input type="text" class="form-control" id="cc-cvv" placeholder="" name="cvv">
+                      <div class="invalid-feedback">
+                        Security code required
+                      </div>
+                    </div>
+                  </div>
+        
+                 
+
+            </div>
+            </div>
+           
+          
+          </div>
+
+        
+
+          <hr class="my-4"> 
+      
+          <button class= "btn btn-secondary btn-lg confirm" type="submit">Confirm Purchase</button>
+
+      </form>
+	   <div> <a href="/buyer" class="btn btn-secondary btn-lg cancel" >Cancel Order</a> </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+  </footer>
+</div>
+    <script>
+      (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+          var forms = document.getElementsByClassName('needs-validation');
+      
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    document.getElementById("credit").addEventListener('change', function(){
+    document.getElementById("cc-name").required = this.checked;
+    document.getElementById("cc-number").required = this.checked;
+    document.getElementById("cc-expiration").required = this.checked;
+    document.getElementById("cc-cvv").required = this.checked;
+})
+document.getElementById("cash").addEventListener('change', function(){
+    document.getElementById("cc-name").required = !this.checked;
+    document.getElementById("cc-number").required = !this.checked;
+    document.getElementById("cc-expiration").required = !this.checked;
+    document.getElementById("cc-cvv").required = !this.checked;
+})
+
+ /*dropdown of products*/
+      function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+        }
+    </script>
+  </body>
+</html>

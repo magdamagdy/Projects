@@ -1,0 +1,138 @@
+{%load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Create New Account</title>
+	<style>
+		
+		body{
+			background:rgb(219 ,226, 226);
+			padding:0px;
+			margin:0px;
+			box-sizing: border-box;
+		}
+		.row{
+			background:white;
+			border-radius:30px;
+			box-shadow:12px 12px 22px grey;
+		}
+		img{
+			border-top-left-radius:30px;
+			border-bottom-left-radius:30px;
+		}
+		.btn1{
+			border:none;
+			outline:none;
+			height:50px;
+			width:100%;
+			background-color:#0a043c;
+			color:white;
+			border-radius:4px;
+			font-weight:bold;
+		}
+		.btn1:hover{
+			background:white;
+			border:1px solid;
+			color:#0a043c;;
+		}
+		/*.slider{
+			width:1200px;
+			height:1000px;
+			background:url(file:///F:/Light%20Center/User/Desktop/F.jpg);
+			animation:slide 7s infinite;
+		}
+		@keyframes slide{
+			25%{background:url(file:///F:/Light%20Center/User/Desktop/F.jpg)}
+			50%{background:url(file:///F:/Light%20Center/User/Desktop/F3.jpg)}
+			75%{background:url(file:///F:/Light%20Center/User/Desktop/F4.jpg)}
+			100%{background:url(file:///F:/Light%20Center/User/Desktop/F5.jpg)}
+
+		}*/
+	</style>
+  </head>
+  <body>
+	<div class="Form my-4 mx-5">
+		<div class="container">
+			<div class="row no-gutters">
+				<div class="col-lg-5">
+					<img src="{%static 'F3.jpg' %}" class="img-fluid" alt="Furniture" style="width:1200px;
+						height:816px;animation:slide 3s infinite;">
+				</div>
+				<div class="col-lg-7 px-5 pt-5">
+					<h1 class="font-weight-bold py-3">Furniture</h1>
+					<h4>Create New Account</h4>
+					<form method="POST"  >
+						{% csrf_token %}
+
+						<div>
+						{% for message in messages %}
+							<font color="red"></font>
+						<h3> {{ message }} </h3>
+						{% endfor %}
+					</div>
+                     <div class="form-row">
+							<div class="col-lg-7">
+								<input type="text" placeholder="Enter your Username" id="username" name="username" class="form-control my-3 p-4" required>
+
+							</div>
+						</div>
+
+
+
+						<div class="form-row">
+							<div class="col-lg-7">
+								<input type="email" placeholder="Enter your email" id="email" name="email" class="form-control my-3 p-4" required>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="col-lg-7">
+								<input type="password" placeholder="Enter your password" id="password" name="password" class="form-control my-3 p-4" required>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="col-lg-7">
+								<input type="password" placeholder="Re-Enter Password" id="password1" name="password1" class="form-control my-3 p-4" required>
+							</div>
+						</div>
+
+
+						<div class="form-row">
+							<div class="col-lg-7">
+								<div class="dropdown">
+									<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="background-color:#0a043c;">
+										select
+									</button>
+									<div class="dropdown-menu" >
+										<input type="radio" id="Buyer" name="check" value="Buyer" required >
+										<label for="Buyer">Buyer</label><br>
+										<input type="radio" id="seller" name="check" value="seller" required>
+										<label for="seller">Seller</label><br>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="col-lg-7">
+								<button type="submit" class="btn1 mt-3 mb-5">Create New Account</button>
+							</div>
+						</div>
+						
+					</form>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

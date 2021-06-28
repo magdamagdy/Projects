@@ -1,0 +1,1266 @@
+IMPORT numpy
+
+from django.shortcuts IMPORT render, redirect
+
+from dashboard.models IMPORT Additem
+
+from .models IMPORT Whishlist, Reviews, Rating, Seller_rating, Product_rating
+
+from django.utils.datastructures IMPORT MultiValueDictKeyError
+
+from django.contrib.auth.models IMPORT User, AnonymousUser
+
+from reg.models IMPORT type_of_customer
+
+# Create your views here.
+
+DEFINE FUNCTION home(request):
+
+    RETURN render(request, 'home.html')
+
+
+
+
+
+DEFINE FUNCTION reg(request):
+
+    RETURN render(request, 'reg.html')
+
+
+
+
+
+DEFINE FUNCTION log(request):
+
+    RETURN render(request, 'log.html')
+
+
+
+DEFINE FUNCTION buyer(request):
+
+    RETURN render(request,'buyer_homepage.html')
+
+
+
+DEFINE FUNCTION seller(request):
+
+    RETURN render(request,'seller_homepage.html')
+
+
+
+
+
+# Categories
+
+DEFINE FUNCTION chairs(request):
+
+    IF request.method EQUALS 'POST':
+
+        SET h TO User.objects.filter(username=request.user).exists()
+
+        OUTPUT(h)
+
+        IF h:
+
+            SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(username=request.user)
+
+            OUTPUT(t)
+
+            IF t EQUALS 'Buyer':
+
+                RETURN redirect('/buyer')
+
+            ELSEIF t EQUALS 'seller':
+
+                RETURN redirect('/seller')
+
+        ELSE:
+
+            RETURN redirect('/')
+
+    SET chairs TO Additem.objects.filter(category='chairs')
+
+    SET reviews TO Reviews.objects.filter(category='chairs')
+
+    product_rating()
+
+    SET ratings TO Product_rating.objects.filter(category='chairs')
+
+    RETURN render(request, 'chairs.html', {'chairs': chairs, 'reviews': reviews, 'ratings': ratings})
+
+
+
+
+
+DEFINE FUNCTION armchairs(request):
+
+    IF request.method EQUALS 'POST':
+
+        SET h TO User.objects.filter(username=request.user).exists()
+
+        OUTPUT(h)
+
+        IF h:
+
+            SET t TO type_of_customer.objects.filter(username=request.user).values_list('type',flat=True).get(username=request.user)
+
+            OUTPUT(t)
+
+            IF t EQUALS 'Buyer':
+
+                RETURN redirect('/buyer')
+
+            ELSEIF t EQUALS 'seller':
+
+                RETURN redirect('/seller')
+
+        ELSE:
+
+            RETURN redirect('/')
+
+    SET armchairs TO Additem.objects.filter(category='armchairs')
+
+    SET reviews TO Reviews.objects.filter(category='armchairs')
+
+    product_rating()
+
+    SET ratings TO Product_rating.objects.filter(category='armchairs')
+
+    RETURN render(request, 'armchairs.html', {'armchairs': armchairs, 'reviews': reviews, 'ratings': ratings})
+
+
+
+
+
+DEFINE FUNCTION chaiselongues(request):
+
+    IF request.method EQUALS 'POST':
+
+        SET h TO User.objects.filter(username=request.user).exists()
+
+        OUTPUT(h)
+
+        IF h:
+
+            SET t TO type_of_customer.objects.filter(username=request.user).values_list('type',flat=True).get(username=request.user)
+
+            OUTPUT(t)
+
+            IF t EQUALS 'Buyer':
+
+                RETURN redirect('/buyer')
+
+            ELSEIF t EQUALS 'seller':
+
+                RETURN redirect('/seller')
+
+        ELSE:
+
+            RETURN redirect('/')
+
+    SET chaiselongues TO Additem.objects.filter(category='chaiselongues')
+
+    SET reviews TO Reviews.objects.filter(category='chaiselongues')
+
+    product_rating()
+
+    SET ratings TO Product_rating.objects.filter(category='chaiselongues')
+
+    RETURN render(request, 'chaiselongues.html', {'chaiselongues': chaiselongues, 'reviews': reviews, 'ratings': ratings})
+
+
+
+
+
+DEFINE FUNCTION sofas(request):
+
+    IF request.method EQUALS 'POST':
+
+        SET h TO User.objects.filter(username=request.user).exists()
+
+        OUTPUT(h)
+
+        IF h:
+
+            SET t TO type_of_customer.objects.filter(username=request.user).values_list('type',flat=True).get(username=request.user)
+
+            OUTPUT(t)
+
+            IF t EQUALS 'Buyer':
+
+                RETURN redirect('/buyer')
+
+            ELSEIF t EQUALS 'seller':
+
+                RETURN redirect('/seller')
+
+        ELSE:
+
+            RETURN redirect('/')
+
+    SET sofas TO Additem.objects.filter(category='sofas')
+
+    SET reviews TO Reviews.objects.filter(category='sofas')
+
+    product_rating()
+
+    SET ratings TO Product_rating.objects.filter(category='sofas')
+
+    RETURN render(request, 'sofas.html', {'sofas': sofas, 'reviews': reviews, 'ratings': ratings})
+
+
+
+
+
+DEFINE FUNCTION wardrobes(request):
+
+    IF request.method EQUALS 'POST':
+
+        SET h TO User.objects.filter(username=request.user).exists()
+
+        OUTPUT(h)
+
+        IF h:
+
+            SET t TO type_of_customer.objects.filter(username=request.user).values_list('type',flat=True).get(username=request.user)
+
+            OUTPUT(t)
+
+            IF t EQUALS 'Buyer':
+
+                RETURN redirect('/buyer')
+
+            ELSEIF t EQUALS 'seller':
+
+                RETURN redirect('/seller')
+
+        ELSE:
+
+            RETURN redirect('/')
+
+    SET wardrobes TO Additem.objects.filter(category='wardrobes')
+
+    SET reviews TO Reviews.objects.filter(category='wardrobes')
+
+    product_rating()
+
+    SET ratings TO Product_rating.objects.filter(category='wardrobes')
+
+    RETURN render(request, 'wardrobes.html', {'wardrobes': wardrobes, 'reviews': reviews, 'ratings': ratings})
+
+
+
+
+
+DEFINE FUNCTION beds(request):
+
+    IF request.method EQUALS 'POST':
+
+        SET h TO User.objects.filter(username=request.user).exists()
+
+        OUTPUT(h)
+
+        IF h:
+
+            SET t TO type_of_customer.objects.filter(username=request.user).values_list('type',flat=True).get(username=request.user)
+
+            OUTPUT(t)
+
+            IF t EQUALS 'Buyer':
+
+                RETURN redirect('/buyer')
+
+            ELSEIF t EQUALS 'seller':
+
+                RETURN redirect('/seller')
+
+        ELSE:
+
+            RETURN redirect('/')
+
+    SET beds TO Additem.objects.filter(category='beds')
+
+    SET reviews TO Reviews.objects.filter(category='beds')
+
+    product_rating()
+
+    SET ratings TO Product_rating.objects.filter(category='beds')
+
+    RETURN render(request, 'beds.html', {'beds': beds, 'reviews': reviews, 'ratings': ratings})
+
+
+
+
+
+DEFINE FUNCTION shelving_units(request):
+
+    IF request.method EQUALS 'POST':
+
+        SET h TO User.objects.filter(username=request.user).exists()
+
+        OUTPUT(h)
+
+        IF h:
+
+            SET t TO type_of_customer.objects.filter(username=request.user).values_list('type',flat=True).get(username=request.user)
+
+            OUTPUT(t)
+
+            IF t EQUALS 'Buyer':
+
+                RETURN redirect('/buyer')
+
+            ELSEIF t EQUALS 'seller':
+
+                RETURN redirect('/seller')
+
+        ELSE:
+
+            RETURN redirect('/')
+
+    SET shelving_units TO Additem.objects.filter(category='shelving units')
+
+    SET reviews TO Reviews.objects.filter(category='shelving units')
+
+    product_rating()
+
+    SET ratings TO Product_rating.objects.filter(category='shelving units')
+
+    RETURN render(request, 'shelving_units.html', {'shelving_units': shelving_units, 'reviews': reviews, 'ratings': ratings})
+
+
+
+
+
+DEFINE FUNCTION tables(request):
+
+    IF request.method EQUALS 'POST':
+
+        SET h TO User.objects.filter(username=request.user).exists()
+
+        OUTPUT(h)
+
+        IF h:
+
+            SET t TO type_of_customer.objects.filter(username=request.user).values_list('type',flat=True).get(username=request.user)
+
+            OUTPUT(t)
+
+            IF t EQUALS 'Buyer':
+
+                RETURN redirect('/buyer')
+
+            ELSEIF t EQUALS 'seller':
+
+                RETURN redirect('/seller')
+
+        ELSE:
+
+            RETURN redirect('/')
+
+    SET tables TO Additem.objects.filter(category='tables')
+
+    SET reviews TO Reviews.objects.filter(category='tables')
+
+    product_rating()
+
+    SET ratings TO Product_rating.objects.filter(category='tables')
+
+    RETURN render(request, 'tables.html', {'tables': tables, 'reviews': reviews, 'ratings': ratings})
+
+
+
+
+
+
+
+
+
+# whishlist
+
+
+
+DEFINE FUNCTION Chairs(request, pk):
+
+    user_id=User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+
+
+        IF t EQUALS 'Buyer':
+
+            SET image TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+            SET description TO Additem.objects.values_list('description', flat=True).get(id=pk)
+
+            SET price TO Additem.objects.values_list('price', flat=True).get(id=pk)
+
+            SET user TO request.user
+
+            IF (Whishlist.objects.filter(old_id=pk).exists()) EQUALS False:
+
+                SET new_item TO Whishlist.objects.create(image=image, description=description, price=price, user=user, old_id=pk)
+
+            RETURN redirect('chairs')
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+DEFINE FUNCTION Armchairs(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            SET image TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+            SET description TO Additem.objects.values_list('description', flat=True).get(id=pk)
+
+            SET price TO Additem.objects.values_list('price', flat=True).get(id=pk)
+
+            SET user TO request.user
+
+            IF (Whishlist.objects.filter(old_id=pk).exists()) EQUALS False:
+
+                SET new_item TO Whishlist.objects.create(image=image, description=description, price=price, user=user, old_id=pk)
+
+            RETURN redirect('armchairs')
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+
+
+DEFINE FUNCTION Sofas(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            SET image TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+            SET description TO Additem.objects.values_list('description', flat=True).get(id=pk)
+
+            SET price TO Additem.objects.values_list('price', flat=True).get(id=pk)
+
+            SET user TO request.user
+
+            IF (Whishlist.objects.filter(old_id=pk).exists()) EQUALS False:
+
+                SET new_item TO Whishlist.objects.create(image=image, description=description, price=price, user=user, old_id=pk)
+
+            RETURN redirect('sofas')
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+DEFINE FUNCTION Beds(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            SET image TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+            SET description TO Additem.objects.values_list('description', flat=True).get(id=pk)
+
+            SET price TO Additem.objects.values_list('price', flat=True).get(id=pk)
+
+            SET user TO request.user
+
+            IF (Whishlist.objects.filter(old_id=pk).exists()) EQUALS False:
+
+                SET new_item TO Whishlist.objects.create(image=image, description=description, price=price, user=user, old_id=pk)
+
+            RETURN redirect('beds')
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+
+
+DEFINE FUNCTION Chaiselongues(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            SET image TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+            SET description TO Additem.objects.values_list('description', flat=True).get(id=pk)
+
+            SET price TO Additem.objects.values_list('price', flat=True).get(id=pk)
+
+            SET user TO request.user
+
+            IF (Whishlist.objects.filter(old_id=pk).exists()) EQUALS False:
+
+                SET new_item TO Whishlist.objects.create(image=image, description=description, price=price, user=user, old_id=pk)
+
+            RETURN redirect('chaiselongues')
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+
+
+DEFINE FUNCTION Wardrobes(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            SET image TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+            SET description TO Additem.objects.values_list('description', flat=True).get(id=pk)
+
+            SET price TO Additem.objects.values_list('price', flat=True).get(id=pk)
+
+            SET user TO request.user
+
+            IF (Whishlist.objects.filter(old_id=pk).exists()) EQUALS False:
+
+                SET new_item TO Whishlist.objects.create(image=image, description=description, price=price, user=user, old_id=pk)
+
+            RETURN redirect('wardrobes')
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+DEFINE FUNCTION Shelving_units(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            SET image TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+            SET description TO Additem.objects.values_list('description', flat=True).get(id=pk)
+
+            SET price TO Additem.objects.values_list('price', flat=True).get(id=pk)
+
+            SET user TO request.user
+
+            IF (Whishlist.objects.filter(old_id=pk).exists()) EQUALS False:
+
+                SET new_item TO Whishlist.objects.create(image=image, description=description, price=price, user=user, old_id=pk)
+
+            RETURN redirect('shelving_units')
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+
+
+DEFINE FUNCTION Tables(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            SET image TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+            SET description TO Additem.objects.values_list('description', flat=True).get(id=pk)
+
+            SET price TO Additem.objects.values_list('price', flat=True).get(id=pk)
+
+            SET user TO request.user
+
+            IF (Whishlist.objects.filter(old_id=pk).exists()) EQUALS False:
+
+                SET new_item TO Whishlist.objects.create(image=image, description=description, price=price, user=user, old_id=pk)
+
+            RETURN redirect('tables')
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+DEFINE FUNCTION whishlist(request):
+
+    SET wish_items TO Whishlist.objects.filter(user=request.user)
+
+    RETURN render(request, 'whishlist.html', {'wish_items': wish_items})
+
+
+
+DEFINE FUNCTION remove_from_wish(request, pk):
+
+    Whishlist.objects.filter(id=pk).delete()
+
+    RETURN redirect('whishlist')
+
+
+
+
+
+#reviews
+
+
+
+DEFINE FUNCTION rating_review_chairs(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            IF request.method EQUALS 'POST':
+
+                SET review TO request.POST['review']
+
+                SET img TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+                SET category TO Additem.objects.values_list('category', flat=True).get(id=pk)
+
+                SET new_review TO Reviews.objects.create(review=review, item_id=pk, img=img, category=category)
+
+                TRY:
+
+                    SET rating TO request.POST['rate']
+
+                except MultiValueDictKeyError:
+
+                    SET quantity TO 0
+
+                SET user_id TO Additem.objects.values_list('user', flat=True).get(id=pk)
+
+                SET new_rating TO Rating.objects.create(item_id=pk, rating=rating, user_id=user_id, img=img, category=category)
+
+                RETURN redirect("chairs")
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+DEFINE FUNCTION rating_review_armchairs(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            IF request.method EQUALS 'POST':
+
+                SET review TO request.POST['review']
+
+                SET img TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+                SET category TO Additem.objects.values_list('category', flat=True).get(id=pk)
+
+                SET new_review TO Reviews.objects.create(review=review, item_id=pk, img=img, category=category)
+
+                TRY:
+
+                    SET rating TO request.POST['rate']
+
+                except MultiValueDictKeyError:
+
+                    SET quantity TO 0
+
+                SET user_id TO Additem.objects.values_list('user', flat=True).get(id=pk)
+
+                SET new_rating TO Rating.objects.create(item_id=pk, rating=rating, user_id=user_id, img=img, category=category)
+
+                RETURN redirect("armchairs")
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+
+
+
+
+DEFINE FUNCTION rating_review_sofas(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            IF request.method EQUALS 'POST':
+
+                SET review TO request.POST['review']
+
+                SET img TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+                SET category TO Additem.objects.values_list('category', flat=True).get(id=pk)
+
+                SET new_review TO Reviews.objects.create(review=review, item_id=pk, img=img, category=category)
+
+                TRY:
+
+                    SET rating TO request.POST['rate']
+
+                except MultiValueDictKeyError:
+
+                    SET quantity TO 0
+
+                SET user_id TO Additem.objects.values_list('user', flat=True).get(id=pk)
+
+                SET new_rating TO Rating.objects.create(item_id=pk, rating=rating, user_id=user_id, img=img, category=category)
+
+                RETURN redirect("sofas")
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+DEFINE FUNCTION rating_review_beds(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            IF request.method EQUALS 'POST':
+
+                SET review TO request.POST['review']
+
+                SET img TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+                SET category TO Additem.objects.values_list('category', flat=True).get(id=pk)
+
+                SET new_review TO Reviews.objects.create(review=review, item_id=pk, img=img, category=category)
+
+                TRY:
+
+                    SET rating TO request.POST['rate']
+
+                except MultiValueDictKeyError:
+
+                    SET quantity TO 0
+
+                SET user_id TO Additem.objects.values_list('user', flat=True).get(id=pk)
+
+                SET new_rating TO Rating.objects.create(item_id=pk, rating=rating, user_id=user_id, img=img, category=category)
+
+                RETURN redirect("beds")
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+
+
+DEFINE FUNCTION rating_review_chaiselongues(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            IF request.method EQUALS 'POST':
+
+                SET review TO request.POST['review']
+
+                SET img TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+                SET category TO Additem.objects.values_list('category', flat=True).get(id=pk)
+
+                SET new_review TO Reviews.objects.create(review=review, item_id=pk, img=img, category=category)
+
+                TRY:
+
+                    SET rating TO request.POST['rate']
+
+                except MultiValueDictKeyError:
+
+                    SET quantity TO 0
+
+                SET user_id TO Additem.objects.values_list('user', flat=True).get(id=pk)
+
+                SET new_rating TO Rating.objects.create(item_id=pk, rating=rating, user_id=user_id, img=img, category=category)
+
+                RETURN redirect("chaiselongues")
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+
+
+DEFINE FUNCTION rating_review_wardrobes(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            IF request.method EQUALS 'POST':
+
+                SET review TO request.POST['review']
+
+                SET img TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+                SET category TO Additem.objects.values_list('category', flat=True).get(id=pk)
+
+                SET new_review TO Reviews.objects.create(review=review, item_id=pk, img=img, category=category)
+
+                TRY:
+
+                    SET rating TO request.POST['rate']
+
+                except MultiValueDictKeyError:
+
+                    SET quantity TO 0
+
+                SET user_id TO Additem.objects.values_list('user', flat=True).get(id=pk)
+
+                SET new_rating TO Rating.objects.create(item_id=pk, rating=rating, user_id=user_id, img=img, category=category)
+
+                RETURN redirect("wardrobes")
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+DEFINE FUNCTION rating_review_shelving_units(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            IF request.method EQUALS 'POST':
+
+                SET review TO request.POST['review']
+
+                SET img TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+                SET category TO Additem.objects.values_list('category', flat=True).get(id=pk)
+
+                SET new_review TO Reviews.objects.create(review=review, item_id=pk, img=img, category=category)
+
+                TRY:
+
+                    SET rating TO request.POST['rate']
+
+                except MultiValueDictKeyError:
+
+                    SET quantity TO 0
+
+                SET user_id TO Additem.objects.values_list('user', flat=True).get(id=pk)
+
+                SET new_rating TO Rating.objects.create(item_id=pk, rating=rating, user_id=user_id, img=img, category=category)
+
+                RETURN redirect("shelving_units")
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+DEFINE FUNCTION rating_review_tables(request, pk):
+
+    SET user_id TO User.objects.values_list('id', flat=True).get(username=request.user)
+
+    SET h TO User.objects.filter(id=user_id).exists()
+
+    IF h:
+
+        SET t TO type_of_customer.objects.filter(username=request.user).values_list('type', flat=True).get(
+
+            username=request.user)
+
+
+
+        IF t EQUALS 'Buyer':
+
+            IF request.method EQUALS 'POST':
+
+                SET review TO request.POST['review']
+
+                SET img TO Additem.objects.values_list('image', flat=True).get(id=pk)
+
+                SET category TO Additem.objects.values_list('category', flat=True).get(id=pk)
+
+                SET new_review TO Reviews.objects.create(review=review, item_id=pk, img=img, category=category)
+
+                TRY:
+
+                    SET rating TO request.POST['rate']
+
+                except MultiValueDictKeyError:
+
+                    SET quantity TO 0
+
+                SET user_id TO Additem.objects.values_list('user', flat=True).get(id=pk)
+
+                SET new_rating TO Rating.objects.create(item_id=pk, rating=rating, user_id=user_id, img=img, category=category)
+
+                RETURN redirect("tables")
+
+        ELSE:
+
+            RETURN redirect('/log')
+
+    ELSE:
+
+        RETURN redirect('/log')
+
+
+
+
+
+#rating
+
+
+
+DEFINE FUNCTION seller_rating ():
+
+    SET repeated_user_id TO Rating.objects.all().values_list('user_id')
+
+    SET unique_user_id TO []
+
+    FOR i IN repeated_user_id:
+
+        IF i not IN unique_user_id:
+
+            unique_user_id.append(i)
+
+
+
+    SET unique_user_id TO numpy.array(unique_user_id)
+
+
+
+    SET waiting_avg_list TO []
+
+    FOR i IN unique_user_id:
+
+        waiting_avg_list.append(Rating.objects.values_list('rating', flat=True).filter(user_id=i))
+
+
+
+    SET avg_list TO []
+
+    FOR i IN waiting_avg_list:
+
+        avg_list.append(int((sum(i) / len(i))))
+
+
+
+    SET count TO 0
+
+    FOR i IN avg_list:
+
+        SET id TO unique_user_id[count]
+
+        OUTPUT(id)
+
+        IF (Seller_rating.objects.filter(user_id=id).exists()) EQUALS False:
+
+            SET new_ratingrow TO Seller_rating.objects.create(user_id=id, rating=i)
+
+        ELSE:
+
+            SET instance TO Seller_rating.objects.get(user_id=id)
+
+            SET instance.rating TO i
+
+            SET #instance.user_id TO id
+
+            instance.save()
+
+            SET #update_rating TO Seller_rating.objects.update(rating=i)
+
+        count=count+1
+
+
+
+
+
+DEFINE FUNCTION product_rating ():
+
+    SET repeated_id TO Rating.objects.all().values_list('item_id')
+
+    SET unique_id TO []
+
+    FOR i IN repeated_id:
+
+        IF i not IN unique_id:
+
+            unique_id.append(i)
+
+
+
+    SET unique_id TO numpy.array(unique_id)
+
+
+
+    SET waiting_avg_list TO []
+
+    FOR i IN unique_id:
+
+        waiting_avg_list.append(Rating.objects.values_list('rating', flat=True).filter(item_id=i))
+
+    SET avg_list TO []
+
+    FOR i IN waiting_avg_list:
+
+        avg_list.append(int((sum(i) / len(i))))
+
+    SET count TO 0
+
+    FOR i IN unique_id:
+
+        SET img TO Additem.objects.values_list('image', flat=True).get(id=i)
+
+        SET category TO Additem.objects.values_list('category', flat=True).get(id=i)
+
+        SET rating TO avg_list[count]
+
+        IF (Product_rating.objects.filter(item_id=i).exists()) EQUALS False:
+
+            SET new_ratingrow TO Product_rating.objects.create(item_id=i, img=img, rating=rating, category=category)
+
+        ELSE:
+
+            SET instance TO Product_rating.objects.get(item_id=i)
+
+            SET instance.rating TO rating
+
+            instance.save()
+
+        SET count TO count +1
+
